@@ -17,11 +17,7 @@
 
 <div align="center">
 
-## 🎬 Proof of Concept
-
 ![Reverse Shell Demo](assets/demo.gif)
-
-*Listener Setup → Payload Execution → Shell Access → Persistent Reconnect*
 
 </div>
 
