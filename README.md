@@ -85,7 +85,7 @@ A **reverse shell** is a type of shell session where the target machine initiate
 ### 1. Basic Shells
 Simple TCP reverse shells — a direct socket connection back to the attacker with PowerShell command execution. Minimal footprint, easy to modify, and fast to deploy.
 
-**Scripts:** `Basic-Shell`, `Simple-Shell-1` through `Simple-Shell-8`, `SImple-ReverseShell`
+**Scripts:** `Basic-Shell`, `Simple-Shell-1` through `Simple-Shell-8`, `SImple-ReverseShell`, `Nishang-Style-Banner-Shell`, `BitShift-Buffer-Shell`
 
 ### 2. Advanced Shells
 More sophisticated payloads with evasion techniques, dynamic port handling, and additional features:
@@ -102,6 +102,11 @@ More sophisticated payloads with evasion techniques, dynamic port handling, and 
 | `NPTT-ReverseShell` | Named Pipe over TCP Transport reverse shell |
 | `NPTT-Shell` | Named Pipe shell with custom transport |
 | `SPTT-ReverseShell` | Socket Pipe TCP Transport reverse shell |
+| `Color-Variable-Obfuscated-Shell` | Color-themed variable names and dash-encoded IP for keyword evasion |
+| `Raw-Socket-API-Shell` | Uses `System.Net.Sockets.Socket` directly + env var IEX execution |
+| `EnvVar-Executor-Shell` | Hides IEX in environment variable via reversed string construction |
+| `Resilient-EnvVar-Shell` | Env-based executor with clean exit, empty-input handling, OS info banner |
+| `Alias-Obfuscated-Shell` | PowerShell aliases (`Render`/`Dispatch`) + backtick character-breaking |
 
 ### 3. Persistent Shells
 Shells that survive disconnects, auto-reconnect, and optionally persist across reboots:
@@ -142,7 +147,9 @@ Windows-Reverse-Shell/
 │   ├── Simple-Shell-6.ps1            # Byte array processing
 │   ├── Simple-Shell-7.ps1            # Minimal variable names
 │   ├── Simple-Shell-8.ps1            # Obfuscated string reversal
-│   └── SImple-ReverseShell.ps1       # With connect banner
+│   ├── SImple-ReverseShell.ps1       # With connect banner
+│   ├── Nishang-Style-Banner-Shell.ps1 # Fake MS copyright banner, arg-based IP
+│   └── BitShift-Buffer-Shell.ps1     # Bit-shift arithmetic buffer sizing
 │
 ├── Advanced/                           # Feature-rich shells
 │   ├── Dynamic-Revshell.ps1          # Interactive menu-driven
@@ -154,7 +161,12 @@ Windows-Reverse-Shell/
 │   ├── Multi-Port-Resilient-Shell.ps1 # Multi-port fallback
 │   ├── NPTT-ReverseShell.ps1         # Named Pipe TCP Transport
 │   ├── NPTT-Shell.ps1                # Named Pipe shell
-│   └── SPTT-ReverseShell.ps1         # Socket Pipe TCP Transport
+│   ├── SPTT-ReverseShell.ps1         # Socket Pipe TCP Transport
+│   ├── Color-Variable-Obfuscated-Shell.ps1  # Color-themed keyword evasion
+│   ├── Raw-Socket-API-Shell.ps1      # Raw .NET Socket API
+│   ├── EnvVar-Executor-Shell.ps1     # Env var hidden IEX
+│   ├── Resilient-EnvVar-Shell.ps1    # Clean exit + OS banner
+│   └── Alias-Obfuscated-Shell.ps1    # Alias + backtick evasion
 │
 ├── Persistent/                         # Auto-reconnect & persistence
 │   ├── Persistent-Reverse-Shell_Auto-Reconnect-1.ps1
